@@ -1,9 +1,21 @@
+import sys
+
+# --- Python 3.13+ Compatibility Fix ---
+try:
+    import audioop
+except ImportError:
+    try:
+        import audioop_lpm as audioop
+        sys.modules["audioop"] = audioop
+    except ImportError:
+        pass
+# ---------------------------------------
+
 import discord
 from discord.ext import commands, tasks
 import asyncio
 import datetime
 import logging
-import sys
 import io
 import re
 import json
